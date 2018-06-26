@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Vue 一页简历在线编辑器</title>
+</head>
+<body>
+
+    <div class="page" id="app">
+
+        <aside class="buttons">
+            <button class="signIn">登录</button>
+            <button class="signOut">登出</button>
+            <button>编辑</button>
+            <button>保存</button>
+            <button>打印</button>
+            <button>换肤</button>
+        </aside>
+
+        <main class="white">
+            <div class="resume">
+                <div class="info">
+                    <div class="infoShow">
+                        <div class="name">
+                            <h1>{{resume.info.name}}</h1>
+                            <p>求职岗位：<span>{{resume.info.job}}</span></p>
+                        </div>
+                        <div class="infomation">
+                            <div class="iconAndContent">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-location"></use>
+                                </svg>
+                                <span class="content">{{resume.info.live}}</span>
+                            </div>
+                            <div class="iconAndContent">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-agentfillmtui"></use>
+                                </svg> 
+                                <span class="content">{{resume.info.age}}</span>
+                            </div>
+                            <div class="iconAndContent">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-iostelephone"></use>
+                                </svg> 
+                                <span class="content">{{resume.info.telephone}}</span>
+                            </div>
+                            <div class="iconAndContent">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-icon-email"></use>
+                                </svg> 
+                                <span class="content">{{resume.info.email}}</span>
+                            </div>
+                            <div class="iconAndContent">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wechat"></use>
+                                </svg> 
+                                <span class="content">{{resume.info.wechat}}</span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="infoEdit"></div>   
+                </div> 
+
+                <split-line v-bind:line-name="line.stateself"></split-line>
+                
+                <div class="statement">
+                    <div class="statementShow">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{resume.statement.content}}</span></p>
+                    </div>
+                    <div class="statementEdit"></div>
+                </div>
+
+                <split-line v-bind:line-name="line.projects"></split-line>
+
+                
+            
+                
+            </div>            
+        </main>
+
+        <aside class="img">
+            <img src="./img/1530004863(1).png" >
+        </aside>
+        
+    </div>
+
+
+
+    <script src="//at.alicdn.com/t/font_722412_hn4oz2310g4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="./js/line.js"></script>
+    <!-- <script src="./js/resume-body.js"></script> -->
+
+    <script src="./js/root.js"></script>
+</body>
+</html>

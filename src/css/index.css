@@ -1,0 +1,159 @@
+
+*{margin:0;padding:0;box-sizing: border-box}
+*::before{box-sizing: border-box}
+*::after{box-sizing: border-box}
+a,ul,ol,button{list-style: none;color:inherit;outline:none}
+
+body{
+    background:rgb(56,56,56);
+    font-size:14px;
+}
+
+.page{
+    margin:0 auto;
+    width:1100px;
+    height:1100px;
+    background:rgb(195,188,178);
+    position: relative;
+}
+
+
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+
+
+
+/***aside buttons***/
+aside.buttons{
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width:193px;
+    height:inherit;
+}
+
+aside.buttons button{
+    margin:13px 10px;
+    height:82px;
+    width:82px;
+    border:none;
+    border-radius:50%;
+    font-size:16px;
+    background: rgb(62,63,68);
+    color:rgb(195,188,178);
+
+}
+
+aside.buttons .signIn,
+aside.buttons .signOut{
+    margin-top:70px;
+}
+
+aside.buttons .signOut{
+    display: none;
+}
+
+/***aside buttons***/
+
+/***main resume***/
+main.white{
+    width:712px;
+    min-height:980px;
+    background:rgb(246,246,246);
+    position: absolute;
+    margin:60px 0;
+    left:50%;
+    top:0;
+    transform: translateX(-50%)
+
+}
+
+main.white .resume{
+    width:650px;
+    height:920px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+}
+
+main.white .infoShow{
+    display: flex;
+    flex-direction: row;
+    margin:10px 0;
+}
+
+main.white .infoShow .name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow:3;
+}
+
+main.white .infoShow .name h1{
+    font-size:24px;
+    margin-bottom:5px;
+}
+main.white .infoShow .infomation{
+    flex-grow:4;
+    margin-left:35px;
+}
+
+main.white .infoShow .infomation .iconAndContent{
+    font-size:13px;
+    display: flex;
+    flex-direction: row;
+    margin:2px 0;
+}
+
+main.white .infoShow .infomation .icon{
+    margin-right:10px;
+    margin-top:2px;
+
+}
+
+main.white .splitLine p{
+    margin-bottom:6px;
+    margin-top:18px;
+    font-size: 13px;
+}
+main.white .splitLine .outLine{
+    border-top:2px solid rgb(222,222,222);
+    width:100%;
+    position: relative;
+    margin-bottom:18px;
+}
+
+main.white .splitLine .inLine{
+    border-top:2px solid rgb(32,32,32);
+    width:8%;
+    position: absolute;
+    bottom:0px;
+    left:0;
+    
+}
+
+/***main resume***/
+
+
+/***aside img***/
+
+aside.img{
+    position: absolute;
+    right:0;
+    top:10px;
+}
+
+aside.img img{
+    width:190px;
+    height:400px;
+}
+
+/***aside img***/
