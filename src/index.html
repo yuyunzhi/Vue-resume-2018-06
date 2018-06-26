@@ -16,6 +16,7 @@
             <button class="signOut">登出</button>
             <button>编辑</button>
             <button>保存</button>
+            <button>分享</button>
             <button>打印</button>
             <button>换肤</button>
         </aside>
@@ -75,9 +76,57 @@
 
                 <split-line v-bind:line-name="line.projects"></split-line>
 
-                
-            
-                
+                <div class="projects"></div>
+                    <div class="projectShow">
+                        <div class="oneProject">
+                            <div class="projectName">
+                                <p>{{resume.projects[0].name}}</p>
+                                <p>{{resume.projects[0].skill}}</p>
+                                <a v-bind:href="resume.projects[0].link" target="_blank">点击预览</a>
+                                <div class="removeProject">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-removecircleo"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{resume.projects[0].describe}}</p>
+                        </div>
+                        <div class="oneProject">
+                            <div class="projectName">
+                                <p>{{resume.projects[0].name}}</p>
+                                <p>{{resume.projects[0].skill}}</p>
+                                <a v-bind:href="resume.projects[0].link" target="_blank">点击预览</a>
+                                <div class="removeProject">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-removecircleo"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{resume.projects[0].describe}}</p>
+                        </div>
+                        <div class="oneProject">
+                            <div class="projectName">
+                                <p>{{resume.projects[0].name}}</p>
+                                <p>{{resume.projects[0].skill}}</p>
+                                <a v-bind:href="resume.projects[0].link" target="_blank">点击预览</a>
+                                <div class="removeProject">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-removecircleo"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{resume.projects[0].describe}}</p>
+                        </div>
+                        <div class="addProject">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-add"></use>
+                            </svg>
+                        </div>
+                    </div>          
+                    <div class="projectEdit"></div>
+  
+                <split-line v-bind:line-name="line.skills"></split-line>                   
+
             </div>            
         </main>
 
@@ -89,7 +138,7 @@
 
 
 
-    <script src="//at.alicdn.com/t/font_722412_hn4oz2310g4.js"></script>
+    <script src="//at.alicdn.com/t/font_722412_7a3nukxezsa.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="./js/line.js"></script>

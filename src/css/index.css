@@ -2,7 +2,7 @@
 *{margin:0;padding:0;box-sizing: border-box}
 *::before{box-sizing: border-box}
 *::after{box-sizing: border-box}
-a,ul,ol,button{list-style: none;color:inherit;outline:none}
+a,ul,ol,button{list-style: none;color:inherit;outline:none;}
 
 body{
     background:rgb(56,56,56);
@@ -119,6 +119,68 @@ main.white .infoShow .infomation .icon{
 
 }
 
+main.white .statementShow p{
+
+    width:100%;
+    height:60px;
+    overflow: hidden;
+}
+
+main.white .projectShow .projectName{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom:6px;
+}
+
+main.white .projectShow .projectName p:nth-child(1){
+    font-size:14px;
+    font-weight: bold;
+}
+
+main.white .projectShow .projectName a{
+    cursor: pointer;
+}
+
+main.white .projectShow .projectDescribe{
+    width:100%;
+    height:60px;
+    overflow: hidden;
+    margin-bottom:10px;
+}
+
+main.white .projectShow .removeProject{
+    cursor: pointer;
+} 
+main.white .projectShow .addProject{
+    text-align: center;
+}
+
+main.white .projectShow .addProject .icon{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***组件 项目***/
+
+
+
+/***组件 项目***/
+
+/***组件 分割线***/
+
 main.white .splitLine p{
     margin-bottom:6px;
     margin-top:18px;
@@ -139,6 +201,7 @@ main.white .splitLine .inLine{
     left:0;
     
 }
+/***组件 分割线***/
 
 /***main resume***/
 
