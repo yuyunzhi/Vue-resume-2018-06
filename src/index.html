@@ -23,7 +23,7 @@
 
         <main class="white">
             <div class="resume">
-                <div class="info">
+                <section class="info">
                     <div class="infoShow">
                         <div class="name">
                             <h1>{{resume.info.name}}</h1>
@@ -63,70 +63,68 @@
                         </div>
                     </div> 
                     <div class="infoEdit"></div>   
-                </div> 
+                </section> 
 
                 <split-line v-bind:line-name="line.stateself"></split-line>
                 
-                <div class="statement">
+                <section class="statement">
                     <div class="statementShow">
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{resume.statement.content}}</span></p>
                     </div>
                     <div class="statementEdit"></div>
-                </div>
+                </section>
 
                 <split-line v-bind:line-name="line.projects"></split-line>
 
-                <div class="projects"></div>
-                    <div class="projectShow">
-                        <div class="oneProject">
+                <section class="projects">
+                    <ul class="projectShow">
+                        <li class="oneProject" v-for="(skill,index) in resume.projects">
                             <div class="projectName">
-                                <p>{{resume.projects[0].name}}</p>
-                                <p>{{resume.projects[0].skill}}</p>
-                                <a v-bind:href="resume.projects[0].link" target="_blank">点击预览</a>
-                                <div class="removeProject">
+                                <p>{{skill.name}}</p>
+                                <p>{{skill.useSkill}}</p>
+                                <a v-bind:href="skill.link" target="_blank">点击预览</a>
+                                <div class="removeProject"  @click="removeProject(index)">
                                     <svg class="icon" aria-hidden="true">
                                         <use xlink:href="#icon-removecircleo"></use>
                                     </svg>
                                 </div>
                             </div>
-                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{resume.projects[0].describe}}</p>
-                        </div>
-                        <div class="oneProject">
-                            <div class="projectName">
-                                <p>{{resume.projects[0].name}}</p>
-                                <p>{{resume.projects[0].skill}}</p>
-                                <a v-bind:href="resume.projects[0].link" target="_blank">点击预览</a>
-                                <div class="removeProject">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use xlink:href="#icon-removecircleo"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{resume.projects[0].describe}}</p>
-                        </div>
-                        <div class="oneProject">
-                            <div class="projectName">
-                                <p>{{resume.projects[0].name}}</p>
-                                <p>{{resume.projects[0].skill}}</p>
-                                <a v-bind:href="resume.projects[0].link" target="_blank">点击预览</a>
-                                <div class="removeProject">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use xlink:href="#icon-removecircleo"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{resume.projects[0].describe}}</p>
-                        </div>
-                        <div class="addProject">
-                            <svg class="icon" aria-hidden="true">
+                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</p>
+                        </li>
+                        <div class="addProject" >
+                            <svg class="icon" aria-hidden="true" v-on:click="addProject">
                                 <use xlink:href="#icon-add"></use>
                             </svg>
                         </div>
-                    </div>          
-                    <div class="projectEdit"></div>
-  
+                    </ul>
+                     
+                    <div class="projectEdit"></div>              
+                </section>
+
                 <split-line v-bind:line-name="line.skills"></split-line>                   
 
+                <section class="skills">
+                    <div class="skillShow">
+                        <ul>
+                            <li v-for="(skill,index) in resume.skills">
+                                <span class="skillName">
+                                    <span class="name">{{skill.name}}</span>
+                                    <div class="removeSkill" @click="removeSkill(index)" >
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-removecircleo"></use>
+                                        </svg>
+                                    </div>
+                                </span>
+                                <span class="skillDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</span>
+                            </li>
+                        </ul>
+                        <div class="addSkill" >
+                            <svg class="icon" aria-hidden="true" v-on:click="addSkill">
+                                <use xlink:href="#icon-add"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
             </div>            
         </main>
 
