@@ -25,6 +25,10 @@ body{
    overflow: hidden;
 }
 
+[v-cloak]{
+    display: none;
+}
+
 
 
 /***aside buttons***/
@@ -73,6 +77,7 @@ main.white{
 
 }
 
+
 main.white .resume{
     width:650px;
     height:950px;
@@ -81,6 +86,12 @@ main.white .resume{
     left:50%;
     transform: translate(-50%,-50%);
     overflow:hidden;
+}
+
+main.white .resume .info{
+    width:648px;
+    height:116px;
+    overflow: hidden;
 }
 
 main.white .infoShow{
@@ -119,10 +130,57 @@ main.white .infoShow .infomation .icon{
 
 }
 
+main.white .infoEdit{
+    display: flex;
+    justify-content: space-around;
+}
+
+main.white .infoEdit div{
+    margin:4px 6px;
+}
+
+main.white .infoEdit .name div{
+    display: flex;
+    justify-content: space-between;
+}
+
+main.white .infoEdit .name div input{
+    margin-top:5px;
+}
+main.white .infoEdit span{
+
+    padding:2px 4px;
+    background:rgb(195,188,178);
+    border-radius: 4px;
+    margin:5px 6px;
+}
+
+main.white .infoEdit input{
+    border:1px solid rgb(195,188,178);
+    border-radius: 3px;
+    height:23px;
+    padding:0 5px;
+}
+
+main.white .infoEdit .information{
+    margin-top:6px;
+}
+
 main.white .statementShow p{
 
     width:100%;
     overflow: hidden;
+}
+
+main.white .statementEdit textarea{
+    width:100%;
+    height:42px;
+    font-size:14px;
+    line-height:17px;
+    padding:3px;
+    resize:none;
+    border:1px solid rgb(195,188,178);
+    word-wrap:break-word;
 }
 
 main.white .projectShow .projectName{
@@ -148,16 +206,52 @@ main.white .projectShow .projectDescribe{
     margin-bottom:10px;
 }
 
-main.white .projectShow .removeProject{
-    cursor: pointer;
-} 
-main.white .projectShow .addProject{
-    margin-top:-10px;
-    text-align: center;
+main.white .projectEdit .name{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:6px;
 }
 
-main.white .projectShow .addProject .icon{
+main.white .projectEdit .name span{
+    padding:2px 4px;
+    background:rgb(195,188,178);
+    border-radius: 4px;
+    margin:5px 6px 5px 0;
+}
+
+main.white .projects ul .addProject{
+    text-align: center;
+    margin-top:-5px;
+}
+
+main.white .projects ul .addProject .icon{
     cursor: pointer;
+}
+
+main.white .projectEdit input{
+    border:1px solid rgb(195,188,178);
+    border-radius: 3px;
+    height:23px;
+    padding:0 5px;
+    width:155px;
+}
+main.white .projectEdit textarea{
+    width:100%;
+    height:42px;
+    font-size:14px;
+    line-height:17px;
+    padding:3px;
+    resize:none;
+    border:1px solid rgb(195,188,178);
+    word-wrap:break-word;
+    margin-bottom:5px;
+}
+
+main.white .skills ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 main.white .skillShow .skillName{
@@ -173,26 +267,52 @@ main.white .skillShow .skillName .name{
 
 main.white .skillShow .skillDescribe{
     display: block;
-
     width:315px;
     height:60px;
     margin-top: 6px;
     overflow:hidden;
 }
 
-main.white .skillShow ul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-main.white .skillShow li{
+main.white .skillShow{
     border:1px dashed #888;
     margin-bottom:10px;
 }
 
-main.white .skillShow .addSkill{
+main.white .skillEdit .name{
+    display: flex;
+    justify-content: space-between;
+    width:315px;
+}
+
+main.white .skillEdit .name span{
+    padding:2px 4px;
+    background:rgb(195,188,178);
+    border-radius: 4px;
+    margin:5px 6px 5px 0;
+}
+
+main.white .skillEdit .name input{
+    border:1px solid rgb(195,188,178);
+    border-radius: 3px;
+    height:23px;
+    padding:0 5px;
+    width:180px;
+}
+
+main.white .skillEdit textarea{
+    width:315px;
+    height:42px;
+    font-size:14px;
+    line-height:17px;
+    padding:3px;
+    resize:none;
+    border:1px solid rgb(195,188,178);
+    word-wrap:break-word;
+    margin-bottom:10px;
+    margin-top:6px;
+}
+
+main.white .skills .addSkill{
     text-align:center;
     margin-top:-10px;
 }

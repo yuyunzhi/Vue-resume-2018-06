@@ -23,8 +23,8 @@
 
         <main class="white">
             <div class="resume">
-                <section class="info">
-                    <div class="infoShow">
+                <section class="info" v-cloak>
+                    <div class="infoShow"v-show="showVisible">
                         <div class="name">
                             <h1>{{resume.info.name}}</h1>
                             <p>求职岗位：<span>{{resume.info.job}}</span></p>
@@ -62,68 +62,101 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="infoEdit"></div>   
+                    <div class="infoEdit" v-show="editVisible">
+                        <div class="name">
+                            <div><span>姓 名</span><input type="text"v-model="resume.info.name"></div>
+                            <div><span>居 住</span><input type="text"v-model="resume.info.live"></div>
+                            <div><span>求职岗位</span><input type="text"v-model="resume.info.job"></div>
+                        </div>
+                        <div class="information">
+                            <div><span>年 龄</span><input type="text"v-model="resume.info.age"></div>
+                            <div><span>电 话</span><input type="text"v-model="resume.info.telephone"></div>
+                            <div><span>邮 箱</span><input type="text"v-model="resume.info.email"></div>
+                            <div><span>微 信</span><input type="text"v-model="resume.info.wechat"></div>
+                        </div>
+
+                    </div>   
                 </section> 
 
                 <split-line v-bind:line-name="line.stateself"></split-line>
                 
                 <section class="statement">
-                    <div class="statementShow">
+                    <div class="statementShow" v-show="showVisible" v-cloak>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{resume.statement.content}}</span></p>
                     </div>
-                    <div class="statementEdit"></div>
+                    <div class="statementEdit" v-show="editVisible"v-cloak>
+                        <textarea type="text" v-model="resume.statement.content"></textarea>
+                    </div>
                 </section>
 
                 <split-line v-bind:line-name="line.projects"></split-line>
 
                 <section class="projects">
-                    <ul class="projectShow">
+                    <ul v-cloak>
                         <li class="oneProject" v-for="(skill,index) in resume.projects">
-                            <div class="projectName">
-                                <p>{{skill.name}}</p>
-                                <p>{{skill.useSkill}}</p>
-                                <a v-bind:href="skill.link" target="_blank">点击预览</a>
-                                <div class="removeProject"  @click="removeProject(index)">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use xlink:href="#icon-removecircleo"></use>
-                                    </svg>
+                            <div class="projectShow" v-show="showVisible">
+                                <div class="projectName">
+                                    <p>{{skill.name}}</p>
+                                    <p>{{skill.useSkill}}</p>
+                                    <a v-bind:href="skill.link" target="_blank">点击预览</a>
                                 </div>
+                                <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</p>                
                             </div>
-                            <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</p>
+
+                            <div class="projectEdit"v-show="editVisible">
+                                <div class="name">
+                                    <div><span>名称</span><input type="text"v-model="skill.name"></div>
+                                    <div><span>技术</span><input type="text"v-model="skill.useSkill"></div>                                  
+                                    <div><span>链接</span><input type="text"v-model="skill.link"></div> 
+                                    <div class="removeProject"  @click="removeProject(index)"  v-show="editVisible">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-removecircleo"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <textarea type="text" v-model="skill.describe"></textarea>                                                      
+                            </div>   
                         </li>
-                        <div class="addProject" >
+                        <div class="addProject" v-show="editVisible" >
                             <svg class="icon" aria-hidden="true" v-on:click="addProject">
                                 <use xlink:href="#icon-add"></use>
                             </svg>
                         </div>
                     </ul>
-                     
-                    <div class="projectEdit"></div>              
+                                
                 </section>
 
                 <split-line v-bind:line-name="line.skills"></split-line>                   
 
                 <section class="skills">
-                    <div class="skillShow">
-                        <ul>
+
+                        <ul v-cloak>
                             <li v-for="(skill,index) in resume.skills">
-                                <span class="skillName">
-                                    <span class="name">{{skill.name}}</span>
-                                    <div class="removeSkill" @click="removeSkill(index)" >
-                                        <svg class="icon" aria-hidden="true">
-                                            <use xlink:href="#icon-removecircleo"></use>
-                                        </svg>
+                                <div class="skillShow"v-show="showVisible">
+                                    <span class="skillName">
+                                        <span class="name">{{skill.name}}</span>
+                                    </span>
+                                    <span class="skillDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</span>
+                                </div>
+                                <div class="skillEdit"v-show="editVisible">
+                                    <div class="name">
+                                        <div><span>技能</span><input type="text"v-model="skill.name"></div>                                  
+                                        <div class="removeSkill" @click="removeSkill(index)" >
+                                            <svg class="icon" aria-hidden="true">
+                                                <use xlink:href="#icon-removecircleo"></use>
+                                            </svg>
+                                        </div>
                                     </div>
-                                </span>
-                                <span class="skillDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</span>
+                                    <textarea type="text" v-model="skill.describe"></textarea>                                                                                     
+                                </div>
                             </li>
                         </ul>
-                        <div class="addSkill" >
+                        <div class="addSkill"v-show="editVisible">
                             <svg class="icon" aria-hidden="true" v-on:click="addSkill">
                                 <use xlink:href="#icon-add"></use>
                             </svg>
                         </div>
-                    </div>
+
                 </section>
             </div>            
         </main>
