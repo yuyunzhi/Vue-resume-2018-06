@@ -188,7 +188,12 @@ window.resumebody={
                 stateself:'自我介绍 / STATEMENT',
                 projects:'项目经历 / PROJECT EXPERIENCE',
                 skills:'技能 / SKILLS',
-            }
+            },
+            user:{
+                email:'',
+                password:''
+
+            },
         }
     },
     methods:{
@@ -211,11 +216,10 @@ window.resumebody={
         changeBtnState($event){
             //$event的值为login logout signout save edit share print skin 
             if($event==='login'){ //点击登陆
-                
 
             }else if($event==='logout'){ //点击登出
 
-            }else if($event==='signout'){ //点击注册
+            }else if($event==='signin'){ //点击注册
 
             }else if($event==='edit'){ //点击编辑
                 this.editVisible=true
@@ -241,6 +245,9 @@ window.resumebody={
             }else if($event==='share'){ //点击分享
 
             }else if($event==='skin'){ //点击换肤
+
+            }else if($event==='print'){//点击打印
+                window.print()
 
             }
         }

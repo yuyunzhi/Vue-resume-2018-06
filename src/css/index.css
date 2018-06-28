@@ -41,7 +41,7 @@ aside.buttons{
     height:inherit;
 }
 
-aside.buttons button{
+aside.buttons .btn{
     margin:13px 10px;
     height:82px;
     width:82px;
@@ -54,7 +54,17 @@ aside.buttons button{
 
 }
 
-aside.buttons .signIn,
+aside.buttons .logIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    left:41px;
+    top:35px;
+}
+
+aside.buttons .logIn,
 aside.buttons .signOut{
     margin-top:70px;
 }
