@@ -1,17 +1,19 @@
 Vue.component('aside-buttons',{
-    props:[],
+    props:['userHasLogin'],
     template:`
     <aside class="buttons">
-
-        <router-link to="/login" class="logIn btn" @click="changeButtons('login')">登录</router-link>
-        <button class="signOut btn" @click="changeButtons('logout')">登出</button>
-        <button class="btn"@click="changeButtons('edit')">编辑</button>
-        <button class="btn"@click="changeButtons('save')">保存</button>
-        <button class="btn"@click="changeButtons('share')">分享</button>
-        <button class="btn"@click="changeButtons('print')">打印</button>
-        <button class="btn"@click="changeButtons('skin')">换肤</button>
+        <button class="logIn"@click="changeButtons('login')" v-show="!userHasLogin">登录</button>
+        <button class="signOut"@click="changeButtons('logout')" v-show="userHasLogin">登出</button>
+        <button @click="changeButtons('edit')"v-show="userHasLogin">编辑</button>
+        <button @click="changeButtons('save')"v-show="userHasLogin">保存</button>
+        <button @click="changeButtons('share')"v-show="userHasLogin">分享</button>
+        <button @click="changeButtons('print')"v-show="userHasLogin">打印</button>
+        <button @click="changeButtons('skin')"v-show="userHasLogin">换肤</button>
     </aside>
     `,
+    created(){
+        console.log('传递后的值',this.userHasLogin)
+    },
     methods:{
         changeButtons(statement){
             this.$emit('change-btn-state',statement)

@@ -38,10 +38,10 @@ aside.buttons{
     position: relative;
     align-items: center;
     width:193px;
-    height:inherit;
+    margin-top:60px;
 }
 
-aside.buttons .btn{
+aside.buttons button{
     margin:13px 10px;
     height:82px;
     width:82px;
@@ -54,24 +54,8 @@ aside.buttons .btn{
 
 }
 
-aside.buttons .logIn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    position: relative;
-    left:41px;
-    top:35px;
-}
 
-aside.buttons .logIn,
-aside.buttons .signOut{
-    margin-top:70px;
-}
 
-aside.buttons .signOut{
-    display: none;
-}
 
 /***aside buttons***/
 

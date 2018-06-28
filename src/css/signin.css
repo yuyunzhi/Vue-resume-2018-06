@@ -1,5 +1,5 @@
 
-.signIn{
+.signInBox{
     width:40%;
     height:310px;
     position: relative;
@@ -10,13 +10,13 @@
     transform: translate(-50%,-50%);
 }
 
-.signIn .icon{
+.signInBox .icon{
     position: absolute;
     top:1px;
     right:1px;
 }
 
-.signIn .title{
+.signInBox .title{
     font-size:20px;
     font-weight: bold;
     position: relative;
@@ -24,7 +24,7 @@
     left:45px;
 }
 
-.signIn .pointOut{
+.signInBox .pointOut{
     position: relative;
     top:34px;
     left:45px;
@@ -32,7 +32,12 @@
     color:red;
 }
 
-.signIn form{
+.signInBox .pointOut .link{
+    color:#576b95;
+    text-decoration: none;
+}
+
+.signInBox form{
     display: flex;
     flex-direction: column;
     width:80%;
@@ -41,44 +46,44 @@
     left:50%;
     transform: translate(-50%,-50%);
 }
-.signIn form .userName{
+.signInBox form .userName{
     position: relative;
 }
-.signIn form .userName .icon{
+.signInBox form .userName .icon{
     position: absolute;
     top:10px;
     left:15px;
 }
 
-.signIn form .userPassWord{
+.signInBox form .userPassWord{
     position: relative;
 }
-.signIn form .userPassWord .icon{
+.signInBox form .userPassWord .icon{
     position: absolute;
     top:10px;
     left:15px;
 }
-.signIn form input{
+.signInBox form input{
     padding:5px 40px;
     width:100%;
     border:1px solid rgb(195,188,178);
 }
-.signIn form .signInContent{
+.signInBox form .signInContent{
     widows: 100%;
     height:36px;
     margin-bottom: 20px;
 }
-.signIn form .signInBtn{
+.signInBox form .signInBtn{
     background:rgba(195,188,178,0.5);
     border:none;
     cursor: pointer;
 }
-.signIn form .signInBtn:hover
+.signInBox form .signInBtn:hover
 {
     border:1px solid rgba(195,188,178);
 }
 
-.signIn .goToLogin{
+.signInBox .goToLogin{
     position: absolute;
     width:100%;
     bottom:30px;

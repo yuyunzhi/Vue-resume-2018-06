@@ -1,158 +1,10 @@
 
 window.resumebody={
-    template:
-    `
-<div>
-
-<aside-buttons v-on:change-btn-state="changeBtnState($event)"></aside-buttons>  
-
-<main class="white">
-    <div class="resume">
-        <section class="info" v-cloak>
-            <div class="infoShow"v-show="showVisible">
-                <div class="name">
-                    <h1>{{resume.info.name}}</h1>
-                    <p>求职岗位：<span>{{resume.info.job}}</span></p>
-                </div>
-                <div class="infomation">
-                    <div class="iconAndContent">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-location"></use>
-                        </svg>
-                        <span class="content">{{resume.info.live}}</span>
-                    </div>
-                    <div class="iconAndContent">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-agentfillmtui"></use>
-                        </svg> 
-                        <span class="content">{{resume.info.age}}</span>
-                    </div>
-                    <div class="iconAndContent">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-iostelephone"></use>
-                        </svg> 
-                        <span class="content">{{resume.info.telephone}}</span>
-                    </div>
-                    <div class="iconAndContent">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-icon-email"></use>
-                        </svg> 
-                        <span class="content">{{resume.info.email}}</span>
-                    </div>
-                    <div class="iconAndContent">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-wechat"></use>
-                        </svg> 
-                        <span class="content">{{resume.info.wechat}}</span>
-                    </div>
-                </div>
-            </div> 
-            <div class="infoEdit" v-show="editVisible">
-                <div class="name">
-                    <div><span>姓 名</span><input type="text"v-model="resume.info.name"></div>
-                    <div><span>居 住</span><input type="text"v-model="resume.info.live"></div>
-                    <div><span>求职岗位</span><input type="text"v-model="resume.info.job"></div>
-                </div>
-                <div class="information">
-                    <div><span>年 龄</span><input type="text"v-model="resume.info.age"></div>
-                    <div><span>电 话</span><input type="text"v-model="resume.info.telephone"></div>
-                    <div><span>邮 箱</span><input type="text"v-model="resume.info.email"></div>
-                    <div><span>微 信</span><input type="text"v-model="resume.info.wechat"></div>
-                </div>
-
-            </div>   
-        </section> 
-
-        <split-line v-bind:line-name="line.stateself"></split-line>
-        
-        <section class="statement">
-            <div class="statementShow" v-show="showVisible" v-cloak>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{resume.statement.content}}</span></p>
-            </div>
-            <div class="statementEdit" v-show="editVisible"v-cloak>
-                <textarea type="text" v-model="resume.statement.content"></textarea>
-            </div>
-        </section>
-
-        <split-line v-bind:line-name="line.projects"></split-line>
-
-        <section class="projects">
-            <ul v-cloak>
-                <li class="oneProject" v-for="(skill,index) in resume.projects">
-                    <div class="projectShow" v-show="showVisible">
-                        <div class="projectName">
-                            <p>{{skill.name}}</p>
-                            <p>{{skill.useSkill}}</p>
-                            <a v-bind:href="skill.link" target="_blank">点击预览</a>
-                        </div>
-                        <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</p>                
-                    </div>
-
-                    <div class="projectEdit"v-show="editVisible">
-                        <div class="name">
-                            <div><span>名称</span><input type="text"v-model="skill.name"></div>
-                            <div><span>技术</span><input type="text"v-model="skill.useSkill"></div>                                  
-                            <div><span>链接</span><input type="text"v-model="skill.link"></div> 
-                            <div class="removeProject"  @click="removeProject(index)"  v-show="editVisible">
-                                <svg class="icon" aria-hidden="true">
-                                    <use xlink:href="#icon-removecircleo"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <textarea type="text" v-model="skill.describe"></textarea>                                                      
-                    </div>   
-                </li>
-                <div class="addProject" v-show="editVisible" >
-                    <svg class="icon" aria-hidden="true" v-on:click="addProject">
-                        <use xlink:href="#icon-add"></use>
-                    </svg>
-                </div>
-            </ul>
-                        
-        </section>
-
-        <split-line v-bind:line-name="line.skills"></split-line>                   
-
-        <section class="skills" v-cloak>
-                <ul>
-                    <li v-for="(skill,index) in resume.skills">
-                        <div class="skillShow"v-show="showVisible">
-                            <span class="skillName">
-                                <span class="name">{{skill.name}}</span>
-                            </span>
-                            <span class="skillDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</span>
-                        </div>
-                        <div class="skillEdit"v-show="editVisible">
-                            <div class="name">
-                                <div><span>技能</span><input type="text"v-model="skill.name"></div>                                  
-                                <div class="removeSkill" @click="removeSkill(index)" >
-                                    <svg class="icon" aria-hidden="true">
-                                        <use xlink:href="#icon-removecircleo"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <textarea type="text" v-model="skill.describe"></textarea>                                                                                     
-                        </div>
-                    </li>
-                </ul>
-                <div class="addSkill"v-show="editVisible">
-                    <svg class="icon" aria-hidden="true" v-on:click="addSkill">
-                        <use xlink:href="#icon-add"></use>
-                    </svg>
-                </div>
-       </section>
-    </div>            
-</main>
-
-<aside class="img">
-    <img src="./img/1530004863(1).png" >
-</aside>
-</div>
-    `,
     data(){
         return{
             showVisible:true,
             editVisible:false,
+            userHasLogin:false,
             resume:{
                 info:{
                     name:'余咖咖',
@@ -189,12 +41,161 @@ window.resumebody={
                 projects:'项目经历 / PROJECT EXPERIENCE',
                 skills:'技能 / SKILLS',
             },
-            user:{
-                email:'',
-                password:''
-
-            },
         }
+    },
+    template:
+    `
+    <div>
+
+            <aside-buttons v-on:change-btn-state="changeBtnState($event)" v-bind:user-has-login="userHasLogin"></aside-buttons>  
+
+            <main class="white">
+                <div class="resume">
+                    <section class="info" v-cloak>
+                        <div class="infoShow"v-show="showVisible">
+                            <div class="name">
+                                <h1>{{resume.info.name}}</h1>
+                                <p>求职岗位：<span>{{resume.info.job}}</span></p>
+                            </div>
+                            <div class="infomation">
+                                <div class="iconAndContent">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-location"></use>
+                                    </svg>
+                                    <span class="content">{{resume.info.live}}</span>
+                                </div>
+                                <div class="iconAndContent">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-agentfillmtui"></use>
+                                    </svg> 
+                                    <span class="content">{{resume.info.age}}</span>
+                                </div>
+                                <div class="iconAndContent">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-iostelephone"></use>
+                                    </svg> 
+                                    <span class="content">{{resume.info.telephone}}</span>
+                                </div>
+                                <div class="iconAndContent">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-icon-email"></use>
+                                    </svg> 
+                                    <span class="content">{{resume.info.email}}</span>
+                                </div>
+                                <div class="iconAndContent">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-wechat"></use>
+                                    </svg> 
+                                    <span class="content">{{resume.info.wechat}}</span>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="infoEdit" v-show="editVisible">
+                            <div class="name">
+                                <div><span>姓 名</span><input type="text"v-model="resume.info.name"></div>
+                                <div><span>居 住</span><input type="text"v-model="resume.info.live"></div>
+                                <div><span>求职岗位</span><input type="text"v-model="resume.info.job"></div>
+                            </div>
+                            <div class="information">
+                                <div><span>年 龄</span><input type="text"v-model="resume.info.age"></div>
+                                <div><span>电 话</span><input type="text"v-model="resume.info.telephone"></div>
+                                <div><span>邮 箱</span><input type="text"v-model="resume.info.email"></div>
+                                <div><span>微 信</span><input type="text"v-model="resume.info.wechat"></div>
+                            </div>
+
+                        </div>   
+                    </section> 
+
+                    <split-line v-bind:line-name="line.stateself"></split-line>
+                    
+                    <section class="statement">
+                        <div class="statementShow" v-show="showVisible" v-cloak>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{resume.statement.content}}</span></p>
+                        </div>
+                        <div class="statementEdit" v-show="editVisible"v-cloak>
+                            <textarea type="text" v-model="resume.statement.content"></textarea>
+                        </div>
+                    </section>
+
+                    <split-line v-bind:line-name="line.projects"></split-line>
+
+                    <section class="projects">
+                        <ul v-cloak>
+                            <li class="oneProject" v-for="(skill,index) in resume.projects">
+                                <div class="projectShow" v-show="showVisible">
+                                    <div class="projectName">
+                                        <p>{{skill.name}}</p>
+                                        <p>{{skill.useSkill}}</p>
+                                        <a v-bind:href="skill.link" target="_blank">点击预览</a>
+                                    </div>
+                                    <p class="projectDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</p>                
+                                </div>
+
+                                <div class="projectEdit"v-show="editVisible">
+                                    <div class="name">
+                                        <div><span>名称</span><input type="text"v-model="skill.name"></div>
+                                        <div><span>技术</span><input type="text"v-model="skill.useSkill"></div>                                  
+                                        <div><span>链接</span><input type="text"v-model="skill.link"></div> 
+                                        <div class="removeProject"  @click="removeProject(index)"  v-show="editVisible">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use xlink:href="#icon-removecircleo"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <textarea type="text" v-model="skill.describe"></textarea>                                                      
+                                </div>   
+                            </li>
+                            <div class="addProject" v-show="editVisible" >
+                                <svg class="icon" aria-hidden="true" v-on:click="addProject">
+                                    <use xlink:href="#icon-add"></use>
+                                </svg>
+                            </div>
+                        </ul>
+                                    
+                    </section>
+
+                    <split-line v-bind:line-name="line.skills"></split-line>                   
+
+                    <section class="skills" v-cloak>
+                            <ul>
+                                <li v-for="(skill,index) in resume.skills">
+                                    <div class="skillShow"v-show="showVisible">
+                                        <span class="skillName">
+                                            <span class="name">{{skill.name}}</span>
+                                        </span>
+                                        <span class="skillDescribe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{skill.describe}}</span>
+                                    </div>
+                                    <div class="skillEdit"v-show="editVisible">
+                                        <div class="name">
+                                            <div><span>技能</span><input type="text"v-model="skill.name"></div>                                  
+                                            <div class="removeSkill" @click="removeSkill(index)" >
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use xlink:href="#icon-removecircleo"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <textarea type="text" v-model="skill.describe"></textarea>                                                                                     
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="addSkill"v-show="editVisible">
+                                <svg class="icon" aria-hidden="true" v-on:click="addSkill">
+                                    <use xlink:href="#icon-add"></use>
+                                </svg>
+                            </div>
+                </section>
+                </div>            
+            </main>
+
+            <aside class="img">
+                <img src="./img/1530004863(1).png" >
+            </aside>
+    </div>
+    `,
+    created(){
+        eventHub.$on('user-has-login',()=>{ 
+            this.userHasLogin=true          
+        })
     },
     methods:{
         addProject(){
@@ -216,8 +217,14 @@ window.resumebody={
         changeBtnState($event){
             //$event的值为login logout signout save edit share print skin 
             if($event==='login'){ //点击登陆
-
+                this.$router.push('/login')
+                
             }else if($event==='logout'){ //点击登出
+                AV.User.logOut();
+                // 现在的 currentUser 是 null 了
+                var currentUser = AV.User.current();
+                console.log('点击了登出')
+                this.userHasLogin=false
 
             }else if($event==='signin'){ //点击注册
 
