@@ -14,8 +14,8 @@
         <aside class="buttons">
             <button class="signIn">登录</button>
             <button class="signOut">登出</button>
-            <button>编辑</button>
-            <button>保存</button>
+            <button v-on:click="editState">编辑</button>
+            <button v-on:click="saveState">保存</button>
             <button>分享</button>
             <button>打印</button>
             <button>换肤</button>
@@ -128,9 +128,8 @@
 
                 <split-line v-bind:line-name="line.skills"></split-line>                   
 
-                <section class="skills">
-
-                        <ul v-cloak>
+                <section class="skills" v-cloak>
+                        <ul>
                             <li v-for="(skill,index) in resume.skills">
                                 <div class="skillShow"v-show="showVisible">
                                     <span class="skillName">
@@ -156,8 +155,7 @@
                                 <use xlink:href="#icon-add"></use>
                             </svg>
                         </div>
-
-                </section>
+               </section>
             </div>            
         </main>
 

@@ -69,6 +69,14 @@ const app = new Vue({
         },
         removeSkill(index){
             this.resume.skills.splice(index,1)            
+        },
+        editState(){
+            this.editVisible=true
+            this.showVisible=false
+        },
+        saveState(){
+            this.editVisible=false
+            this.showVisible=true
         }
     }
 })
