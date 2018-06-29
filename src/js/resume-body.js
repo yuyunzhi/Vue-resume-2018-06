@@ -4,7 +4,7 @@ window.resumebody={
     template:
     `
     <div>
-
+        <span class="userNameBoundary">{{xyz}}</span>
         <aside-buttons v-on:change-btn-state="changeBtnState($event)" v-bind:user-has-login="userHasLogin"></aside-buttons>  
 
         <main class="white">
@@ -157,16 +157,16 @@ window.resumebody={
             userHasLogin:false,
             resume:{
                 info:{
-                    name:'余咖咖',
+                    name:'张三',
                     job:'前端工程师',
                     live:'上海嘉定',
                     telephone:'13877777777',
-                    email:'1@qq.com',
-                    wechat:'xxxxxxxxxx',
+                    email:'zhangsan@qq.com',
+                    wechat:'88888888',
                     age:'25',
                 },
                 statement:{
-                    content:'我是来自山东的xxx，大家所看到的我的内在就像我的外表一样，敦厚和实在是我对自己最好的概括。专业扎实，看书是我最大的享受，钻研电脑让我感觉其乐无穷。给我一个机会，我会给您一个惊喜。'
+                    content:'我是来自山东的张三，大家所看到的我的内在就像我的外表一样，敦厚和实在是我对自己最好的概括。专业扎实，看书是我最大的享受，钻研电脑让我感觉其乐无穷。给我一个机会，我会给您一个惊喜。'
                 },
                 projects:[
                     {name:'无缝轮播',useSkill:'JavaScript、jQuery',link:'http://www.baidu.com',describe:'该无缝轮播能够自动播放、点击前后按钮切换图片、点击第N个灰色按钮切换到第N张图片。通过百分比布局实现更改图片尺寸不影响无缝轮播效果，通过jQuery动态生成与img数量相等的button。'},
@@ -179,11 +179,30 @@ window.resumebody={
                     {name:'jQuery',describe:'完美还原设计稿'},
                     {name:'jQuery',describe:'完美还原设计稿'},                
                 ],
-    
-                social:[
-                    {github:'http://github/xxx.com'},
-                    {zhihu:'http://zhihu/xxx.com'},
+            },
+            originalResume:{
+                info:{
+                    name:'张三',
+                    job:'前端工程师',
+                    live:'上海嘉定',
+                    telephone:'13877777777',
+                    email:'zhangsan@qq.com',
+                    wechat:'88888888',
+                    age:'25',
+                },
+                statement:{
+                    content:'我是来自山东的张三，大家所看到的我的内在就像我的外表一样，敦厚和实在是我对自己最好的概括。专业扎实，看书是我最大的享受，钻研电脑让我感觉其乐无穷。给我一个机会，我会给您一个惊喜。'
+                },
+                projects:[
+                    {name:'无缝轮播',useSkill:'JavaScript、jQuery',link:'http://www.baidu.com',describe:'该无缝轮播能够自动播放、点击前后按钮切换图片、点击第N个灰色按钮切换到第N张图片。通过百分比布局实现更改图片尺寸不影响无缝轮播效果，通过jQuery动态生成与img数量相等的button。'},
+                    {name:'无缝轮播',useSkill:'JavaScript、jQuery',link:'http://www.baidu.com',describe:'该无缝轮播能够自动播放、点击前后按钮切换图片、点击第N个灰色按钮切换到第N张图片。通过百分比布局实现更改图片尺寸不影响无缝轮播效果，通过jQuery动态生成与img数量相等的button。'},
                     
+                ],
+                skills:[
+                    {name:'Html、CSS、javascript',describe:'完美还原设计稿完美还原设计稿完美还原设计稿完美还原设计设计稿完美还原设计稿完美。'},
+                    {name:'jQuery',describe:'完美还原设计稿'}, 
+                    {name:'jQuery',describe:'完美还原设计稿'},
+                    {name:'jQuery',describe:'完美还原设计稿'},                
                 ],
             },
             line:{
@@ -191,19 +210,51 @@ window.resumebody={
                 projects:'项目经历 / PROJECT EXPERIENCE',
                 skills:'技能 / SKILLS',
             },
+            xyz:"1",
         }
+    },
+    created:function(){
+        this.updateUserBoundary()
     },
     mounted:function(){
         window.eventHub.$on('user-has-login',()=>{
-            console.log('1')
             this.userHasLogin=true
-            console.log('2')
+            this.updateUserBoundary()
         })
     },
-    updated:function(){
-        console.log(app)
-    },
     methods:{
+        updateUserBoundary(){
+            let currentUser = AV.User.current();
+            if(currentUser==null||currentUser==undefined){
+                this.xyz="未登录"
+                return
+            }else{
+                this.userHasLogin=true
+                this.xyz=currentUser.attributes.username
+                let userId = currentUser.id
+
+                this.getResume(userId).then((userData)=>{                  
+                    let resume = JSON.parse(userData.attributes.resume)
+                    this.resume=resume
+                })
+            }
+        },
+        saveResume(){
+            let user = AV.Object.createWithoutData('User', AV.User.current().id);
+            // 修改属性
+            user.set('resume', JSON.stringify(this.resume));
+            // 保存到云端
+            user.save();
+        },
+        getResume(userId){
+            let query = new AV.Query('User');
+            return query.get(userId).then((userData)=>{
+                return userData
+            },  (error)=> {
+                console.log('获取数据失败')
+              // 异常处理
+            });
+        },
         addProject(){
             this.resume.projects.push(
                 {name:'无缝轮播',useSkill:'JavaScript、jQuery',link:'http://www.baidu.com',describe:'该无缝轮播能够自动播放、点击前后按钮切换图片、点击第N个灰色按钮切换到第N张图片。通过百分比布局实现更改图片尺寸不影响无缝轮播效果，通过jQuery动态生成与img数量相等的button。'},                
@@ -229,11 +280,12 @@ window.resumebody={
             }else if($event==='logout'){ //点击登出
                 AV.User.logOut();
                 // 现在的 currentUser 是 null 了
-                var currentUser = AV.User.current();
-                console.log('点击了登出')
+                this.updateUserBoundary()
                 this.userHasLogin=false
+                this.resume=this.originalResume
 
             }else if($event==='signin'){ //点击注册
+                this.updateUserBoundary()
 
             }else if($event==='edit'){ //点击编辑
                 this.editVisible=true
@@ -242,19 +294,7 @@ window.resumebody={
             }else if($event==='save'){ //点击保存
                 this.editVisible=false
                 this.showVisible=true
-
-                var user = AV.Object.extend('user');
-                // 新建对象
-                var a = new user();
-                // 设置名称
-                console.log(this.resume)
-                a.set('resume',this.resume);
-                // 设置优先级
-                a.save().then((xxx)=>{
-                  console.log(xxx);
-                }, function (error) {
-                  console.error(error);
-                });
+                this.saveResume()
 
             }else if($event==='share'){ //点击分享
 
@@ -267,5 +307,7 @@ window.resumebody={
         }
     }
 }
+
+
 
 Vue.component('resume-body',resumebody)

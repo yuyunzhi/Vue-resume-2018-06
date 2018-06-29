@@ -30,7 +30,11 @@ body{
 }
 
 
-
+.page .userNameBoundary{
+    position: absolute;
+    right:260px;
+    top:30px;
+}
 /***aside buttons***/
 aside.buttons{
     display: inline-flex;

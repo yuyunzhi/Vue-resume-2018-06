@@ -5,8 +5,8 @@ window.login={
             content:'',
             goToLogin:'',
             user:{
-                email:'',
-                password:''
+                email:'1@qq.com',
+                password:'1'
             },
         }
     },
@@ -48,12 +48,16 @@ window.login={
     methods:{
         loginSuccess(){
             AV.User.logIn(this.user.email, this.user.password).then((user)=>{ 
-                console.log('登录成功')
-                    this.content=''                 
-                    //登录成功后，需要切换路由到"/"
-                    this.$router.push('/')                                   
-                    window.eventHub.$emit('user-has-login')
+                this.content=''
+                this.user.email='1@qq.com'
+                this.user.password='1'                 
+                //登录成功后，需要切换路由到"/"
+                this.$router.push('/')                                   
+                window.eventHub.$emit('user-has-login')
+
               },(error)=>{
+                this.user.email=''
+                this.user.password=''  
                 if(error.code==211){
                     this.content='抱歉，邮箱不存在~'
                     this.goToLogin='请注册'                 

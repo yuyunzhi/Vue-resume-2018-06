@@ -8,8 +8,6 @@ window.signin={
                 email:'',
                 password:''
             },
-            
-
         }
     },
     template:`
