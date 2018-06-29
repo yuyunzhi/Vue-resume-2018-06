@@ -11,9 +11,6 @@ Vue.component('aside-buttons',{
         <button @click="changeButtons('skin')"v-show="userHasLogin">换肤</button>
     </aside>
     `,
-    created(){
-        console.log('传递后的值',this.userHasLogin)
-    },
     methods:{
         changeButtons(statement){
             this.$emit('change-btn-state',statement)

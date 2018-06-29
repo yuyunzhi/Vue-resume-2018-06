@@ -12,20 +12,13 @@
 <body>
 
     <div class="page" id="app">
-        <router-view></router-view> 
+        <keep-alive>
+            <router-view></router-view> 
+        </keep-alive>
     </div>
 
     <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.3/dist/av-min.js"></script>
-    <script>
-        var APP_ID = 'UffKBLehFD5PYskReUJfzPQG-gzGzoHsz';
-        var APP_KEY = 'z6gd399KpOFcrTiDXHMToxcr';
-
-        AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
-        });
-
-    </script>
+    <script src="./js/av.js"></script>
     <script src="//at.alicdn.com/t/font_722412_j0k0qmnbbq.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>

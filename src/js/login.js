@@ -51,9 +51,8 @@ window.login={
                 console.log('登录成功')
                     this.content=''                 
                     //登录成功后，需要切换路由到"/"
-                    this.$router.push('/')
-                    console.log(user)
-                    eventHub.$emit('user-has-login')
+                    this.$router.push('/')                                   
+                    window.eventHub.$emit('user-has-login')
               },(error)=>{
                 if(error.code==211){
                     this.content='抱歉，邮箱不存在~'
