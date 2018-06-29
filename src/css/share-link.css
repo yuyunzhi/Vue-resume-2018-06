@@ -1,0 +1,35 @@
+.shareLink{
+    background:rgb(195,188,178);
+    border:1px solid rgb(195,188,178);
+    width:50%;
+    height:100px;
+    position: relative;
+    top:-395px;
+    left:25%;
+    border-radius: 2px;
+}
+.shareLink>div{
+    display: flex;
+    justify-content: space-between;
+}
+.shareLink .content{
+    position: relative;
+    font-size:14px;
+    top:13px;
+    left:30px;
+}
+
+.shareLink .link{
+    background:white;
+    border:1px solid rgb(195,188,178);
+    width:90%;
+    height: 32px;
+    font-size: 14px;
+    padding:1px 10px;
+    line-height: 28px;
+    position: absolute;
+    left:50%;
+    top:60%;
+    transform: translate(-50%,-50%);
+    resize: none;
+}

@@ -39,7 +39,6 @@ window.signin={
             <button class="signInContent signInBtn"type="submit">注册</button>
         </form>
         <div class="goToLogin">
-            <a class=""href="#">忘记密码了</a>
             <router-link to="/login">立即登陆</router-link>
         </div>
     </div> 

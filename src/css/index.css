@@ -44,7 +44,9 @@ aside.buttons{
     width:193px;
     margin-top:60px;
 }
-
+aside.buttons button:hover{
+    color:white;
+}
 aside.buttons button{
     margin:13px 10px;
     height:82px;

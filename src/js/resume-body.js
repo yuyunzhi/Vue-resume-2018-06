@@ -7,7 +7,7 @@ window.resumebody={
         <span class="userNameBoundary">{{xyz}}</span>
         <aside-buttons v-on:change-btn-state="changeBtnState($event)" v-bind:user-has-login="userHasLogin"></aside-buttons>  
 
-        <main class="white">
+        <main class="white" v-cloak>
             <div class="resume">
                 <section class="info" v-cloak>
                     <div class="infoShow"v-show="showVisible">
@@ -148,6 +148,17 @@ window.resumebody={
         <aside class="img">
             <img src="./img/1530004863(1).png" >
         </aside>
+
+        <div class="shareLink" v-show="shareVisible" v-cloak>
+            <div>
+                <span class="content">自动生成分享链接：</span>
+                <svg class="icon" aria-hidden="true"@click="shareVisible=false">
+                    <use xlink:href="#icon-removecircleo"></use>
+                </svg>
+            </div>
+            <textarea class="link"readonly>{{sharelink}}</textarea>
+        </div>
+
     </div>
     `,
     data(){
@@ -155,6 +166,7 @@ window.resumebody={
             showVisible:true,
             editVisible:false,
             userHasLogin:false,
+            shareVisible:false,
             resume:{
                 info:{
                     name:'张三',
@@ -210,16 +222,19 @@ window.resumebody={
                 projects:'项目经历 / PROJECT EXPERIENCE',
                 skills:'技能 / SKILLS',
             },
-            xyz:"1",
+            xyz:"",
+            sharelink:'xxx'
         }
     },
     created:function(){
         this.updateUserBoundary()
+        this.getShareLink()
     },
     mounted:function(){
         window.eventHub.$on('user-has-login',()=>{
             this.userHasLogin=true
             this.updateUserBoundary()
+            this.getShareLink()
         })
     },
     methods:{
@@ -255,6 +270,14 @@ window.resumebody={
               // 异常处理
             });
         },
+        getShareLink(){
+            let currentUser = AV.User.current()
+            if(currentUser){
+                this.sharelink=location.origin+location.pathname+'?user_id='+currentUser.id  
+            }else{
+                this.sharelink='未登录，无法获取链接'
+            }      
+        }, 
         addProject(){
             this.resume.projects.push(
                 {name:'无缝轮播',useSkill:'JavaScript、jQuery',link:'http://www.baidu.com',describe:'该无缝轮播能够自动播放、点击前后按钮切换图片、点击第N个灰色按钮切换到第N张图片。通过百分比布局实现更改图片尺寸不影响无缝轮播效果，通过jQuery动态生成与img数量相等的button。'},                
@@ -288,15 +311,17 @@ window.resumebody={
                 this.updateUserBoundary()
 
             }else if($event==='edit'){ //点击编辑
-                this.editVisible=true
-                this.showVisible=false
+                this.editVisible=!this.editVisible
+                this.showVisible=!this.showVisible
                 
             }else if($event==='save'){ //点击保存
                 this.editVisible=false
                 this.showVisible=true
                 this.saveResume()
+                this.getShareLink()
 
             }else if($event==='share'){ //点击分享
+                this.shareVisible=true
 
             }else if($event==='skin'){ //点击换肤
 

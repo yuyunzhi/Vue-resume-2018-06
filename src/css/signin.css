@@ -87,9 +87,7 @@
     position: absolute;
     width:100%;
     bottom:30px;
-    left:0;
-    display: flex;
-    justify-content: space-around;
+    left:330px;
     color:#576b95;
 
 }
