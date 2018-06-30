@@ -4,61 +4,61 @@ window.resumebody={
     template:
     `
     <div>
-        <span class="userNameBoundary">{{xyz}}</span>
-        <aside-buttons v-on:change-btn-state="changeBtnState($event)" v-bind:user-has-login="userHasLogin"></aside-buttons>  
+        <span class="userNameBoundary" v-show="mode==='edit'">{{xyz}}</span>
+        <aside-buttons v-on:change-btn-state="changeBtnState($event)" v-bind:user-has-login="userHasLogin"v-show="mode==='edit'"></aside-buttons>  
 
         <main class="white" v-cloak>
             <div class="resume">
                 <section class="info" v-cloak>
                     <div class="infoShow"v-show="showVisible">
                         <div class="name">
-                            <h1>{{resume.info.name}}</h1>
-                            <p>求职岗位：<span>{{resume.info.job}}</span></p>
+                            <h1>{{displayresume.info.name}}</h1>
+                            <p>求职岗位：<span>{{displayresume.info.job}}</span></p>
                         </div>
                         <div class="infomation">
                             <div class="iconAndContent">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-location"></use>
                                 </svg>
-                                <span class="content">{{resume.info.live}}</span>
+                                <span class="content">{{displayresume.info.live}}</span>
                             </div>
                             <div class="iconAndContent">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-agentfillmtui"></use>
                                 </svg> 
-                                <span class="content">{{resume.info.age}}</span>
+                                <span class="content">{{displayresume.info.age}}</span>
                             </div>
                             <div class="iconAndContent">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-iostelephone"></use>
                                 </svg> 
-                                <span class="content">{{resume.info.telephone}}</span>
+                                <span class="content">{{displayresume.info.telephone}}</span>
                             </div>
                             <div class="iconAndContent">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-icon-email"></use>
                                 </svg> 
-                                <span class="content">{{resume.info.email}}</span>
+                                <span class="content">{{displayresume.info.email}}</span>
                             </div>
                             <div class="iconAndContent">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-wechat"></use>
                                 </svg> 
-                                <span class="content">{{resume.info.wechat}}</span>
+                                <span class="content">{{displayresume.info.wechat}}</span>
                             </div>
                         </div>
                     </div> 
                     <div class="infoEdit" v-show="editVisible">
                         <div class="name">
-                            <div><span>姓 名</span><input type="text"v-model="resume.info.name"></div>
-                            <div><span>居 住</span><input type="text"v-model="resume.info.live"></div>
-                            <div><span>求职岗位</span><input type="text"v-model="resume.info.job"></div>
+                            <div><span>姓 名</span><input type="text"v-model="displayresume.info.name"></div>
+                            <div><span>居 住</span><input type="text"v-model="displayresume.info.live"></div>
+                            <div><span>求职岗位</span><input type="text"v-model="displayresume.info.job"></div>
                         </div>
                         <div class="information">
-                            <div><span>年 龄</span><input type="text"v-model="resume.info.age"></div>
-                            <div><span>电 话</span><input type="text"v-model="resume.info.telephone"></div>
-                            <div><span>邮 箱</span><input type="text"v-model="resume.info.email"></div>
-                            <div><span>微 信</span><input type="text"v-model="resume.info.wechat"></div>
+                            <div><span>年 龄</span><input type="text"v-model="displayresume.info.age"></div>
+                            <div><span>电 话</span><input type="text"v-model="displayresume.info.telephone"></div>
+                            <div><span>邮 箱</span><input type="text"v-model="displayresume.info.email"></div>
+                            <div><span>微 信</span><input type="text"v-model="displayresume.info.wechat"></div>
                         </div>
 
                     </div>   
@@ -68,10 +68,10 @@ window.resumebody={
                 
                 <section class="statement">
                     <div class="statementShow" v-show="showVisible" v-cloak>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{resume.statement.content}}</span></p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{displayresume.statement.content}}</span></p>
                     </div>
                     <div class="statementEdit" v-show="editVisible"v-cloak>
-                        <textarea type="text" v-model="resume.statement.content"></textarea>
+                        <textarea type="text" v-model="displayresume.statement.content"></textarea>
                     </div>
                 </section>
 
@@ -79,7 +79,7 @@ window.resumebody={
 
                 <section class="projects">
                     <ul v-cloak>
-                        <li class="oneProject" v-for="(skill,index) in resume.projects">
+                        <li class="oneProject" v-for="(skill,index) in displayresume.projects">
                             <div class="projectShow" v-show="showVisible">
                                 <div class="projectName">
                                     <p>{{skill.name}}</p>
@@ -116,7 +116,7 @@ window.resumebody={
 
                 <section class="skills" v-cloak>
                         <ul>
-                            <li v-for="(skill,index) in resume.skills">
+                            <li v-for="(skill,index) in displayresume.skills">
                                 <div class="skillShow"v-show="showVisible">
                                     <span class="skillName">
                                         <span class="name">{{skill.name}}</span>
@@ -152,7 +152,7 @@ window.resumebody={
         <div class="shareLink" v-show="shareVisible" v-cloak>
             <div>
                 <span class="content">自动生成分享链接：</span>
-                <svg class="icon" aria-hidden="true"@click="shareVisible=false">
+                <svg class="icon" aria-hidden="true" @click="shareVisible=false">
                     <use xlink:href="#icon-removecircleo"></use>
                 </svg>
             </div>
@@ -167,6 +167,7 @@ window.resumebody={
             editVisible:false,
             userHasLogin:false,
             shareVisible:false,
+            isPrint:false,
             resume:{
                 info:{
                     name:'张三',
@@ -191,6 +192,8 @@ window.resumebody={
                     {name:'jQuery',describe:'完美还原设计稿'},
                     {name:'jQuery',describe:'完美还原设计稿'},                
                 ],
+            },
+            preivewResume:{
             },
             originalResume:{
                 info:{
@@ -223,12 +226,18 @@ window.resumebody={
                 skills:'技能 / SKILLS',
             },
             xyz:"",
-            sharelink:'xxx'
+            sharelink:'xxx',
+            mode:'edit'
+        }
+    },
+    computed:{
+        displayresume(){
+            return this.mode === 'preview' ? this.preivewResume : this.resume
         }
     },
     created:function(){
         this.updateUserBoundary()
-        this.getShareLink()
+        this.initBoundary()
     },
     mounted:function(){
         window.eventHub.$on('user-has-login',()=>{
@@ -270,6 +279,27 @@ window.resumebody={
               // 异常处理
             });
         },
+        initBoundary(){
+            //获取预览用户的 id
+            let search = location.search
+            let regex = /user_id=([^&]+)/
+            let matches = search.match(regex)
+            let userId
+            if (matches){
+                //预览页面
+                userId = matches[1]
+                this.mode = 'preview'
+                this.getResume(userId).then((userData)=>{               
+                    this.preivewResume= JSON.parse(userData.attributes.resume)
+                })
+                this.getShareLink()
+            }else{
+                //用户登录页面
+                this.updateUserBoundary()
+                this.getShareLink()
+            }
+
+        },
         getShareLink(){
             let currentUser = AV.User.current()
             if(currentUser){
@@ -302,7 +332,8 @@ window.resumebody={
                 
             }else if($event==='logout'){ //点击登出
                 AV.User.logOut();
-                // 现在的 currentUser 是 null 了
+                this.editVisible=false
+                this.showVisible=true
                 this.updateUserBoundary()
                 this.userHasLogin=false
                 this.resume=this.originalResume
@@ -327,6 +358,7 @@ window.resumebody={
 
             }else if($event==='print'){//点击打印
                 window.print()
+                this.isPrint=true
 
             }
         }

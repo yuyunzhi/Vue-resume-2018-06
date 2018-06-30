@@ -1,4 +1,3 @@
-
 *{margin:0;padding:0;box-sizing: border-box}
 *::before{box-sizing: border-box}
 *::after{box-sizing: border-box}
@@ -6,7 +5,7 @@ a,ul,ol,button{list-style: none;color:inherit;outline:none;}
 
 body{
     background:rgb(56,56,56);
-    font-size:14px;
+    font-size: 16px;
 }
 
 .page{
@@ -31,56 +30,35 @@ body{
 
 
 .page .userNameBoundary{
-    position: absolute;
-    right:260px;
-    top:30px;
+display: none;
 }
 
 /***aside buttons***/
 aside.buttons{
-    display: inline-flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    width:193px;
-    margin-top:60px;
+    display: none;
 }
-aside.buttons button:hover{
-    color:white;
-}
-aside.buttons button{
-    margin:13px 10px;
-    height:82px;
-    width:82px;
-    border:none;
-    border-radius:50%;
-    font-size:16px;
-    background: rgb(62,63,68);
-    color:rgb(195,188,178);
-    cursor: pointer;
 
-}
 
 /***aside buttons***/
 
 /***main resume***/
 main.white{
-    width:712px;
-    height:1480px;
+    width:950px;
+    height:1300px;
     background:rgb(246,246,246);
     position: absolute;
-    margin:60px 0;
+    margin:10px 0;
     left:50%;
-    top:0;
-    transform: translateX(-50%)
+    top:50%;
+    transform: translate(-50%,-50%);
 
 }
 
 main.white .resume{
-    width:650px;
-    height:950px;
+    width:100%;
+    height:100%;
     position: absolute;
-    top:35%;
+    top:38%;
     left:50%;
     transform: translate(-50%,-50%);
 }
@@ -106,16 +84,15 @@ main.white .infoShow .name{
 }
 
 main.white .infoShow .name h1{
-    font-size:24px;
+    font-size:28px;
     margin-bottom:5px;
 }
 main.white .infoShow .infomation{
-
     margin-left:60px;
 }
 
 main.white .infoShow .infomation .iconAndContent{
-    font-size:13px;
+    font-size: 16px;
     display: flex;
     flex-direction: row;
     margin:2px 0;
@@ -166,6 +143,7 @@ main.white .infoEdit .information{
 main.white .statementShow p{
 
     width:100%;
+    margin-bottom:10px;
 }
 
 main.white .statementEdit textarea{
@@ -187,17 +165,18 @@ main.white .projectShow .projectName{
 }
 
 main.white .projectShow .projectName p:nth-child(2){
-    font-size:14px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 main.white .projectShow .projectName p:nth-child(1){
-    font-size:14px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 main.white .projectShow .projectName a{
     cursor: pointer;
+    font-size: 16px;
 }
 
 main.white .projectShow .projectDescribe{
@@ -252,24 +231,29 @@ main.white .skills ul{
     flex-wrap: wrap;
     justify-content: space-between;
 }
+main.white .skills li{
+    width:450px;
+}
 
 main.white .skillShow .skillName{
     display: flex;
     flex-direction: row;
-    width:315px;
+    width:100%;
     justify-content: space-between;
 }
 
 main.white .skillShow .skillName .name{
     font-weight: bold;
+    font-size: 16px;
 }
 
 main.white .skillShow .skillDescribe{
     display: block;
-    width:315px;
-    height:60px;
+    width:100%;
+    height:80px;
     margin-top: 6px;
     overflow:hidden;
+    font-size: 16px;
 }
 
 main.white .skillShow{
@@ -339,7 +323,7 @@ main.white .skills .addSkill{
 main.white .splitLine p{
     margin-bottom:6px;
     margin-top:18px;
-    font-size: 13px;
+    font-size: 16px;
 }
 main.white .splitLine .outLine{
     border-top:2px solid rgb(222,222,222);
@@ -364,14 +348,8 @@ main.white .splitLine .inLine{
 /***aside img***/
 
 aside.img{
-    position: absolute;
-    right:0;
-    top:10px;
+    display: none
 }
 
-aside.img img{
-    width:190px;
-    height:400px;
-}
 
 /***aside img***/
