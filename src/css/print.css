@@ -10,8 +10,8 @@ body{
 
 .page{
     margin:0 auto;
-    width:1100px;
-    height:1600px;
+    width:1000px;
+    height:1400px;
     background:rgb(195,188,178);
     position: relative;
 }
@@ -30,7 +30,7 @@ body{
 
 
 .page .userNameBoundary{
-display: none;
+    display: none;
 }
 
 /***aside buttons***/
@@ -42,23 +42,24 @@ aside.buttons{
 /***aside buttons***/
 
 /***main resume***/
+
+
 main.white{
     width:950px;
-    height:1300px;
+    height:1400px;
     background:rgb(246,246,246);
     position: absolute;
     margin:10px 0;
     left:50%;
     top:50%;
     transform: translate(-50%,-50%);
-
 }
 
 main.white .resume{
-    width:100%;
-    height:100%;
+    width:950px;
+    height:1400px;
     position: absolute;
-    top:38%;
+    top:49%;
     left:50%;
     transform: translate(-50%,-50%);
 }
@@ -96,6 +97,7 @@ main.white .infoShow .infomation .iconAndContent{
     display: flex;
     flex-direction: row;
     margin:2px 0;
+    margin-right:-160px;
 }
 
 main.white .infoShow .infomation .icon{
@@ -348,8 +350,12 @@ main.white .splitLine .inLine{
 /***aside img***/
 
 aside.img{
-    display: none
+    display: none;
 }
 
 
 /***aside img***/
+
+.skinPicker{
+    display: none;
+}

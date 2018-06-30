@@ -5,8 +5,8 @@ window.login={
             content:'',
             goToLogin:'',
             user:{
-                email:'1@qq.com',
-                password:'1'
+                email:'',
+                password:''
             },
         }
     },
@@ -48,8 +48,8 @@ window.login={
         loginSuccess(){
             AV.User.logIn(this.user.email, this.user.password).then((user)=>{ 
                 this.content=''
-                this.user.email='1@qq.com'
-                this.user.password='1'                 
+                this.user.email=''
+                this.user.password=''                 
                 //登录成功后，需要切换路由到"/"
                 this.$router.push('/')                                   
                 window.eventHub.$emit('user-has-login')

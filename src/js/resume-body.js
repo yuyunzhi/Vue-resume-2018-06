@@ -168,6 +168,7 @@ window.resumebody={
             userHasLogin:false,
             shareVisible:false,
             isPrint:false,
+            skinVisible:false,
             resume:{
                 info:{
                     name:'张三',
@@ -227,7 +228,7 @@ window.resumebody={
             },
             xyz:"",
             sharelink:'xxx',
-            mode:'edit'
+            mode:'edit',
         }
     },
     computed:{
@@ -262,6 +263,9 @@ window.resumebody={
                     this.resume=resume
                 })
             }
+        },
+        changeSkin(value){
+            this.skinClass=value
         },
         saveResume(){
             let user = AV.Object.createWithoutData('User', AV.User.current().id);
@@ -353,8 +357,6 @@ window.resumebody={
 
             }else if($event==='share'){ //点击分享
                 this.shareVisible=true
-
-            }else if($event==='skin'){ //点击换肤
 
             }else if($event==='print'){//点击打印
                 window.print()

@@ -8,7 +8,6 @@ Vue.component('aside-buttons',{
         <button @click="changeButtons('save')"v-show="userHasLogin">保存</button>
         <button @click="changeButtons('share')"v-show="userHasLogin">分享</button>
         <button @click="changeButtons('print')"v-show="userHasLogin">打印</button>
-        <button @click="changeButtons('skin')"v-show="userHasLogin">换肤</button>
     </aside>
     `,
     methods:{

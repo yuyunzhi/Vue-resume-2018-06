@@ -58,7 +58,6 @@ aside.buttons button{
     background: rgb(62,63,68);
     color:rgb(195,188,178);
     cursor: pointer;
-
 }
 
 /***aside buttons***/
@@ -73,7 +72,6 @@ main.white{
     left:50%;
     top:0;
     transform: translateX(-50%)
-
 }
 
 main.white .resume{
@@ -102,6 +100,7 @@ main.white .infoShow .name{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 
 }
 
@@ -198,6 +197,10 @@ main.white .projectShow .projectName p:nth-child(1){
 
 main.white .projectShow .projectName a{
     cursor: pointer;
+}
+
+main.white .projectShow .projectName a:hover{
+    color:blue;
 }
 
 main.white .projectShow .projectDescribe{
@@ -315,17 +318,6 @@ main.white .skills .addSkill{
     text-align:center;
     margin-top:-10px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /***组件 项目***/

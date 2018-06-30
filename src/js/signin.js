@@ -45,23 +45,28 @@ window.signin={
     `,
     methods:{
         signInSuccess(e){
-            var user = new AV.User();
-            // 设置用户名
-            user.setUsername(this.user.email);
-            // 设置密码
-            user.setPassword(this.user.password);
-            // 设置邮箱
-            user.setEmail(this.user.email);
-            user.signUp().then((user)=>{
-                this.content='恭喜,注册成功啦~'
-                this.goToLogin="请登录"
-            }, (error)=> {
-                if(error.code==203){
-                    this.content='邮箱已被注册'
-                  }else if(error.code==125){
-                    this.content='邮箱地址不合法'                     
-                  }
-            });
+            if(this.user.email===''||this.user.password===''){
+                this.content='请填写注册信息'
+                return
+            }else{
+                var user = new AV.User();
+                // 设置用户名
+                user.setUsername(this.user.email);
+                // 设置密码
+                user.setPassword(this.user.password);
+                // 设置邮箱
+                user.setEmail(this.user.email);
+                user.signUp().then((user)=>{
+                    this.content='恭喜,注册成功啦~'
+                    this.goToLogin="请登录"
+                }, (error)=> {
+                    if(error.code==203){
+                        this.content='邮箱已被注册'
+                      }else if(error.code==125){
+                        this.content='邮箱地址不合法'                     
+                      }
+                });
+            }
         }
     },
 }
