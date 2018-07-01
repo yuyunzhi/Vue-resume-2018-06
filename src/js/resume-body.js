@@ -237,6 +237,9 @@ window.resumebody={
         }
     },
     created:function(){
+        this.$router.push('/login')
+        this.$router.push('/signin')
+        this.$router.push('/')        
         this.updateUserBoundary()
         this.initBoundary()
     },
@@ -332,6 +335,7 @@ window.resumebody={
             //$event的值为login logout signout save edit share print skin 
             if($event==='login'){ //点击登陆
                 this.$router.push('/login')
+                window.eventHub.$emit('removeConetent')
                 //this.userHasLogin=true
                 
             }else if($event==='logout'){ //点击登出

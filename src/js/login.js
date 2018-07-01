@@ -3,7 +3,7 @@ window.login={
     data(){
         return{
             content:'',
-            goToLogin:'',
+            goToSignIn:'',
             user:{
                 email:'',
                 password:''
@@ -15,7 +15,7 @@ window.login={
     <div class="logInBox" v-cloak>
         <div>
             <router-link to="/">
-                <svg class="icon" aria-hidden="true">
+                <svg class="icon" aria-hidden="true" @click="removeContent">
                 <use xlink:href="#icon-remove"></use>
                 </svg>  
             </router-link>
@@ -23,7 +23,7 @@ window.login={
         <div>
             <span class="title">登录</span>
         </div>
-        <span class="pointOut">{{content}}<router-link to="/signin" class="link">{{goToLogin}}</router-link></span>
+        <span class="pointOut">{{content}}<span class="link" @click="goToSignInBtn">{{goToSignIn}}</span></span>
         <form v-on:submit.prevent="loginSuccess">
             <div class="userName"> 
                 <svg class="icon" aria-hidden="true">
@@ -40,11 +40,27 @@ window.login={
             <button class="logInContent loginBtn"type="submit">登录</button>
         </form>
         <div class="goToSignIn">
-            <router-link to="/signin">立即注册</router-link>
+            <span @click="goToSignInBtn">立即注册</span>
         </div>
     </div> 
     `,
+    mounted:function(){
+        window.eventHub.$on('removeConetent',()=>{
+            this.removeContent()
+        })
+        
+    },
     methods:{
+        removeContent(){
+            this.content=''
+            this.goToSignIn=''
+            this.user.email=''
+            this.user.password=''
+        },
+        goToSignInBtn(){
+            this.removeContent()
+            this.$router.push('/signin')  
+        },
         loginSuccess(){
             AV.User.logIn(this.user.email, this.user.password).then((user)=>{ 
                 this.content=''
@@ -59,7 +75,7 @@ window.login={
                 this.user.password=''  
                 if(error.code==211){
                     this.content='抱歉，邮箱不存在~'
-                    this.goToLogin='请注册'                 
+                    this.goToSignIn='请注册'                 
                   }else if(error.code==210){
                     this.content='邮箱和密码不匹配' 
                   }else if(error.code==203){

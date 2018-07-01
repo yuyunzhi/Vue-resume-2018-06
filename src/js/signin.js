@@ -15,14 +15,14 @@ window.signin={
         <div>
             <router-link to="/">
                 <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-remove"></use>
+                    <use xlink:href="#icon-remove"@click="removeContent"></use>
                 </svg>  
             </router-link>
         </div>
         <div>
             <span class="title">注册</span>
         </div>
-        <span class="pointOut">{{content}}<router-link to="/login"class="link">{{goToLogin}}</router-link></span>
+        <span class="pointOut">{{content}}<span to="/login"class="link" @click="goToLoginBtn">{{goToLogin}}</span></span>
         <form v-on:submit.prevent="signInSuccess">
             <div class="userName"> 
                 <svg class="icon" aria-hidden="true">
@@ -39,11 +39,27 @@ window.signin={
             <button class="signInContent signInBtn"type="submit">注册</button>
         </form>
         <div class="goToLogin">
-            <router-link to="/login">立即登陆</router-link>
+            <span @click="goToLoginBtn">立即登陆</span>
         </div>
     </div> 
     `,
+    mounted:function(){
+        window.eventHub.$on('removeConetent',()=>{
+            this.removeContent()
+        })
+        
+    },
     methods:{
+        removeContent(){
+            this.content=''
+            this.goToLogin=''
+            this.user.email=''
+            this.user.password=''   
+        },
+        goToLoginBtn(){
+            this.removeContent()
+            this.$router.push('/login')
+        },
         signInSuccess(e){
             if(this.user.email===''||this.user.password===''){
                 this.content='请填写注册信息'
